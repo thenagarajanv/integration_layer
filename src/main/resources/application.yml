@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: nexusflow
+  datasource:
+    url: ${NEXUSFLOW_DATABASE_URL}
+    username: ${NEXUSFLOW_DATABASE_USERNAME}
+    password: ${NEXUSFLOW_DATABASE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  flyway:
+    enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+server:
+  port: ${NEXUSFLOW_SERVER_PORT:8080}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ${NEXUSFLOW_MANAGEMENT_EXPOSURE:health,info}
+  endpoint:
+    health:
+      probes:
+        enabled: true
